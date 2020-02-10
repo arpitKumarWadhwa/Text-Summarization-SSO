@@ -1,0 +1,14 @@
+title   | hurrican gilbert swept toward dominican republ sunday civil defens alert heavili popul south coast prepar high winds heavi rain high sea
+sent_01 | storm approach southeast sustained winds 75 mph gust 92 mph
+sent_02 | need alarm civil defens director eugenio cabral said televis alert shortli midnight saturday
+sent_03 | cabral said resid provinc barahona close follow gilbert movement estim 100 000 peopl live provinc includ 70 000 citi barahona 125 mile west santo domingo
+sent_04 | tropic storm gilbert form eastern caribbean strengthen hurrican saturday night
+sent_05 | nation hurrican center miami report posit 2 sunday latitud 16 1 north longitud 67 5 west 140 mile south ponc puerto rico 200 mile southeast santo domingo
+sent_06 | nation weather servic san juan puerto rico said gilbert move westward 15 mph broad area cloudi heavi weather rotat around center storm
+sent_07 | weather servic issu flash flood watch puerto rico virgin island least 6 p sunday
+sent_08 | strong winds associ gilbert brought coastal flood strong southeast winds 12 feet feet puerto rico south coast report casualti
+sent_09 | san juan north coast heavi rain gust saturday subsid night
+sent_010 | saturday hurrican florenc downgrad tropic storm remnant push inland u gulf coast
+sent_11 | resid return home happi find littl damag 80 mph winds sheet rain
+sent_12 | florenc sixth name storm 1988 atlant storm season second hurrican
+sent_13 | first debbi reach minim hurrican strength briefli hit mexican coast last month

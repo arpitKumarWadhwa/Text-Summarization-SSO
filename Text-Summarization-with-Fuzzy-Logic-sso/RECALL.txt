@@ -1,0 +1,5 @@
+Recall Summary Dokumen ke-1: 35.71%
+Recall Summary Dokumen ke-2: 16.47%
+Recall Summary Dokumen ke-3: 51.41%
+Recall Summary Dokumen ke-4: 33.05%
+Recall Summary Dokumen ke-5: 0.0%
