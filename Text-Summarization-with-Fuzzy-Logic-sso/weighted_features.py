@@ -1,7 +1,7 @@
 import os
 
 folder = './2.feature/'
-new_folder = './6.weighted_feature/'
+new_folder = './5.weighted_feature/'
 file_names = []
 
 weights_file = './weights.txt'

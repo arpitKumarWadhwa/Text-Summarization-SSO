@@ -1,4 +1,4 @@
-import re, os, numpy as np
+import os, numpy as np
 from collections import Counter
 from utils import cosine, get_TF, get_TFIDF, sentences_from_document
 
@@ -19,47 +19,47 @@ for file in os.listdir(path_inp):
     T, label, sents = sentences_from_document(f)
 
     F1, F2, F3, F4, F5, F6, F7, F8 = [], [], [], [], [], [], [], []
-    # F1: Fitur Title : Feature Title
+    # F1: Feature Title
     for Si in sents:
-        irisan = np.intersect1d(Si, T)
-        F1.append(len(irisan) / len(T))
+        intersect = np.intersect1d(Si, T)
+        F1.append(len(intersect) / len(T))
 
-    # F2: Panjang Kalimat : Sentence Length
+    # F2: Sentence Length
     S_longest = sents[np.argmax([len(j) for j in sents])]
     for Si in sents:
         F2.append(len(Si) / len(S_longest))
 
-    # F3: Posisi Kalimat : Sentence Position
+    # F3: Sentence Position
     for i, Si in enumerate(sents):
         i += 1
         F3.append(1 / i)
 
-    # F4: Data Numerik
+    # F4: Numerical Data
     for Si in sents:
-        Si_numerik = 0
+        Si_numerical = 0
         for token in Si:
             if token.isnumeric():
-                Si_numerik += 1
-        F4.append(Si_numerik / len(Si))
+                Si_numerical += 1
+        F4.append(Si_numerical / len(Si))
 
-    # F5: Kata Tematik : Thematic Words
+    # F5: Thematic Words
     N = 10
     flat = np.concatenate(sents)
     freq = Counter(flat)
 
-    kata_tematik = [i for i, j in freq.most_common(N)]
-    maks_tematik = max([len(np.intersect1d(i, kata_tematik)) for i in sents])
+    thematic_words = [i for i, j in freq.most_common(N)]
+    max_thematic = max([len(np.intersect1d(i, thematic_words)) for i in sents])
 
     for Si in sents:
-        Si_tematik = np.intersect1d(Si, kata_tematik)
-        F5.append(len(Si_tematik) / maks_tematik)
+        Si_thematic = np.intersect1d(Si, thematic_words)
+        F5.append(len(Si_thematic) / max_thematic)
 
-    # F6: ProperNoun : Proper Noun
+    # F6: Proper Noun
     for Si in sents:
         Si_propnouns = np.intersect1d(Si, propernoun)
         F6.append(len(Si_propnouns) / len(Si))
 
-    # F7: Kemiripan Antar Kalimat : Similarities Between Sentences
+    # F7: Similarities Between Sentences
     vocab = sorted(set(flat))
 
     TF = get_TF(sents, vocab)
@@ -71,31 +71,31 @@ for file in os.listdir(path_inp):
             if i == j: continue
             temp.append(cosine(Si, Sj))
         sim_SiSj.append(sum(temp))
-    maks_simSiSj = max(sim_SiSj)
+    max_simSiSj = max(sim_SiSj)
 
     for sim_Si in sim_SiSj:
-        F7.append(sim_Si / maks_simSiSj)
+        F7.append(sim_Si / max_simSiSj)
 
-    # F8: Bobot Term : Term Weight
+    # F8: Term Weight
     TFIDF = get_TFIDF(sents, vocab)
 
     sum_TFIDF = []
     for tfidf in TFIDF:
         sum_TFIDF.append(sum(tfidf))
-    maks_sum_TFIDF = max(sum_TFIDF)
+    max_sum_TFIDF = max(sum_TFIDF)
 
     for sum_tfidf in sum_TFIDF:
-        F8.append(sum_tfidf / maks_sum_TFIDF)
+        F8.append(sum_tfidf / max_sum_TFIDF)
 
     feature = np.round(np.vstack((F1, F2, F3, F4, F5, F6, F7, F8)).T, 7)
 
     f = open(path_out + file, 'w')
-    fitur = []
+    feature = []
     for x, row in enumerate(feature):
         temp = ''
         for col in row:
             space = ' ' * (15 - len(str(col)))
             temp += str(col) + space
-        fitur.append(label[x] + ' ' * 10 + temp)
-    f.write('\n'.join(fitur))
+        feature.append(label[x] + ' ' * 10 + temp)
+    f.write('\n'.join(feature))
     f.close()

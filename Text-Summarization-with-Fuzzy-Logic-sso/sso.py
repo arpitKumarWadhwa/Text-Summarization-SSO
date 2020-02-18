@@ -4,7 +4,7 @@ import numpy as np
 
 
 #Get reference summary
-ref_file = open('./5.reference/001.txt')
+ref_file = open('./4.reference/001.txt')
 ref = ref_file.read()
 ref_file.close()
 
@@ -66,6 +66,16 @@ velocity_limiter_ratio = 0.37
 time_delta = 1
 no_of_rotational_positions = 10
 
+file = open('./weights.txt')
+weights_file = file.read().split('\n')
+file.close()
+
+#best_weights = []
+
+#for weight in weights_file:
+#    best_weights.append(float(weight))
+
+
 weight_matrix = []
 velocity_matrix = [[0.1 for i in range(0, no_of_features)] for j in range(0, population_size)]
 
@@ -120,6 +130,20 @@ def normalize_weight_matrix(weights):
 
     return temp_weights
 
+#Generate best Summary
+#best_summary = []
+#score = score_single_solution(best_weights)
+#best_sentence = extract_best_sentences_from_single_solution(score)
+#original_doc_file = open('./0.dataset raw/1.txt')
+#original_doc = original_doc_file.read().split('\n');
+#original_doc_file.close()
+
+#best_summary.append(original_doc[0])
+#for best in best_sentence:
+#    best_summary.append(original_doc[best])
+
+#print(best_summary)
+
 
 for k in range(0, iterations):
     # STEP 2 - Score the sentences for each solution with their text feature scores
@@ -164,8 +188,8 @@ for k in range(0, iterations):
     # STEP 6 - Update the velocity vector
     for q in range(0, population_size):
         for x in range(0, no_of_features):
-            R1 = 0.6
-            R2 = 0.7
+            R1 = random.random()
+            R2 = random.random()
 
             max_attainable_velocity = velocity_limiter_ratio * velocity_matrix[q][x]
             inertial_velocity = inertia * R2 * velocity_matrix[q][x]

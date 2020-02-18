@@ -159,8 +159,6 @@ def clean(raw):
 
         if no == 0:
             no = 'title   | '
-        # elif no == 1:
-        #    no = ''
         else:
             no = '0'*(2-len(str(no-1)))+str(no)
             no = 'sent_'+no+' | '
@@ -204,7 +202,6 @@ def clean(raw):
         try:
             f.write(i + ' >> ' + word_edit[i] + '\n')
         except:
-            #print(i, 'berhasil ditambahkan ke word_edit')
             # successfully added to word_edit
             word_edit[i] = i
             f.write(i + ' >> ' + i + '\n')
@@ -220,7 +217,6 @@ def clean(raw):
             try:
                 f.write(token + ' >> ' + stem_edit[token] + '\n')
             except:
-                #print(token, 'berhasil ditambahkan ke stem_edit')
                 # successfully added to stem_edit
                 stemtok = stemmer.stem(token)
                 stem_edit[token] = stemtok
@@ -235,7 +231,6 @@ def clean(raw):
         try:
             f.write(i + ' >> ' + prop_edit[i] + '\n')
         except:
-            #print(i, 'berhasil ditambahkan ke prop_edit')
             # successfully added to prop_edit
             prop_edit[i] = '0'
             f.write(i + ' >> 0\n')
