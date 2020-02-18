@@ -4,7 +4,7 @@ import numpy as np
 
 
 #Get reference summary
-ref_file = open('./4.reference/001.txt')
+ref_file = open('./3.reference/001.txt')
 ref = ref_file.read()
 ref_file.close()
 
