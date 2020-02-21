@@ -90,12 +90,12 @@ for file in os.listdir(path_inp):
     feature = np.round(np.vstack((F1, F2, F3, F4, F5, F6, F7, F8)).T, 7)
 
     f = open(path_out + file, 'w')
-    feature = []
+    feature_matrix = []
     for x, row in enumerate(feature):
         temp = ''
         for col in row:
             space = ' ' * (15 - len(str(col)))
             temp += str(col) + space
-        feature.append(label[x] + ' ' * 10 + temp)
-    f.write('\n'.join(feature))
+        feature_matrix.append(label[x] + ' ' * 10 + temp)
+    f.write('\n'.join(feature_matrix))
     f.close()
