@@ -60,7 +60,7 @@ best_solution = []
 population_size = 100
 no_of_features = 8
 iterations = 100
-sentences_to_extract = 4
+sentences_to_extract = 8
 velocity_multiplier = 0.75
 inertia = 0.56
 velocity_limiter_ratio = 0.37
@@ -71,10 +71,10 @@ file = open('./weights.txt')
 weights_file = file.read().split('\n')
 file.close()
 
-#best_weights = []
+best_weights = []
 
-#for weight in weights_file:
-#    best_weights.append(float(weight))
+for weight in weights_file:
+    best_weights.append(float(weight))
 
 
 weight_matrix = []
@@ -132,18 +132,19 @@ def normalize_weight_matrix(weights):
     return temp_weights
 
 #Generate best Summary
-#best_summary = []
-#score = score_single_solution(best_weights)
-#best_sentence = extract_best_sentences_from_single_solution(score)
-#original_doc_file = open('./0.dataset raw/1.txt')
-#original_doc = original_doc_file.read().split('\n');
-#original_doc_file.close()
+best_summary = []
+score = score_single_solution(best_weights)
+best_sentence = extract_best_sentences_from_single_solution(score)
+original_doc_file = open('./0.dataset raw/1.txt')
+original_doc = original_doc_file.read().split('\n');
+original_doc_file.close()
 
-#best_summary.append(original_doc[0])
-#for best in best_sentence:
-#    best_summary.append(original_doc[best])
+best_summary.append(original_doc[0])
+for best in best_sentence:
+    best_summary.append(original_doc[best])
 
-#print(best_summary)
+print(len(best_summary))
+print(best_summary)
 
 
 for k in range(0, iterations):

@@ -58,8 +58,8 @@ frules = [(i[:-1],i[-1].lower()) for i in frules]
 
 index = dict([(j,i) for i,j in enumerate(X)])
 
-# path_inp1 = './2.feature/'
-path_inp1 = './4.weighted_feature/'
+path_inp1 = './2.feature/'
+#path_inp1 = './4.weighted_feature/'
 path_inp2 = './0.dataset raw/'
 path_out1 = './5.scored/'
 path_out2 = './6.summarized/'
@@ -115,7 +115,7 @@ for enum,file in enumerate(os.listdir(path_inp1)):
     print(N_best)
     N_best = sorted(N_best)
 
-    numb = file.split('.')[0]
+    numb = file.split('.')[0] #Get file name
     f_in   = open(path_inp2+str(int(numb))+'.txt').read()
     f_out1 = open(path_out1+file,'w')
     f_out2 = open(path_out2+file,'w')
@@ -137,7 +137,8 @@ for enum,file in enumerate(os.listdir(path_inp1)):
 
         if numb in N_best:
             f_out2.write(sent+'\n')
-        
+
+        #formatting scores
         vals = vals+' '*(8-len(vals))
         sent = sent[:100]+'...' if len(sent) > 100 else sent
         f_out1.write(strg+' | '+vals+'| '+sent+'\n')
