@@ -42,6 +42,7 @@ F8L = fuzz.gaussmf(X,0.025,0.014)
 F8M = fuzz.gaussmf(X,0.08,0.01)
 F8H = fuzz.gaussmf(X,0.55,0.145)
 
+
 NS = open('Ns.txt').read().split()
 NS = np.int32(NS)
 
@@ -58,8 +59,8 @@ frules = [(i[:-1],i[-1].lower()) for i in frules]
 
 index = dict([(j,i) for i,j in enumerate(X)])
 
-path_inp1 = './2.feature/'
-#path_inp1 = './4.weighted_feature/'
+#path_inp1 = './2.feature/'
+path_inp1 = './4.weighted_feature/'
 path_inp2 = './0.dataset raw/'
 path_out1 = './5.scored/'
 path_out2 = './6.summarized/'
